@@ -2,7 +2,8 @@
 
 # Functie pentru validarea unei adrese IP
 check_ip() {
-  if [[ $1 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  result=$(dig +short -x $1)
+  if [ -n "$result" ]; then
     echo "Adresa IP $1 este validă."
   else
     echo "Adresa IP $1 nu este validă."
